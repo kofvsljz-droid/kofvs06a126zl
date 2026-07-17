@@ -1,6 +1,6 @@
 mixed-port: 7890
 allow-lan: true
-mode: Rule
+mode: rule
 log-level: info
 
 proxies:
@@ -11,7 +11,7 @@ proxies:
     port: 443
     username: d760b4f8-76f8-41ed-a49d-c24282fd3312
     password: d760b4f8-76f8-41ed-a49d-c24282fd3312
-    transport: tcp
+    transport: TCP
     udp: true
 
   - name: 🇺🇸 美国02
@@ -20,7 +20,7 @@ proxies:
     port: 443
     username: d760b4f8-76f8-41ed-a49d-c24282fd3312
     password: d760b4f8-76f8-41ed-a49d-c24282fd3312
-    transport: tcp
+    transport: TCP
     udp: true
 
   - name: 🇺🇸 美国03
@@ -29,8 +29,9 @@ proxies:
     port: 443
     username: d760b4f8-76f8-41ed-a49d-c24282fd3312
     password: d760b4f8-76f8-41ed-a49d-c24282fd3312
-    transport: tcp
+    transport: TCP
     udp: true
+
 
   - name: 🇭🇰 香港01
     type: mieru
@@ -38,8 +39,9 @@ proxies:
     port: 443
     username: d760b4f8-76f8-41ed-a49d-c24282fd3312
     password: d760b4f8-76f8-41ed-a49d-c24282fd3312
-    transport: tcp
+    transport: TCP
     udp: true
+
 
   - name: 🇭🇰 香港02
     type: mieru
@@ -47,8 +49,9 @@ proxies:
     port: 65535
     username: d760b4f8-76f8-41ed-a49d-c24282fd3312
     password: d760b4f8-76f8-41ed-a49d-c24282fd3312
-    transport: tcp
+    transport: TCP
     udp: true
+
 
   - name: 🇭🇰 香港03
     type: mieru
@@ -56,8 +59,9 @@ proxies:
     port: 8443
     username: d760b4f8-76f8-41ed-a49d-c24282fd3312
     password: d760b4f8-76f8-41ed-a49d-c24282fd3312
-    transport: tcp
+    transport: TCP
     udp: true
+
 
   - name: 🇯🇵 日本01
     type: mieru
@@ -65,8 +69,9 @@ proxies:
     port: 3389
     username: d760b4f8-76f8-41ed-a49d-c24282fd3312
     password: d760b4f8-76f8-41ed-a49d-c24282fd3312
-    transport: tcp
+    transport: TCP
     udp: true
+
 
   - name: 🇸🇬 新加坡01
     type: mieru
@@ -74,17 +79,17 @@ proxies:
     port: 443
     username: d760b4f8-76f8-41ed-a49d-c24282fd3312
     password: d760b4f8-76f8-41ed-a49d-c24282fd3312
-    transport: tcp
+    transport: TCP
     udp: true
+
 
 
 proxy-groups:
 
-  - name: 🚀 自动测速
+  - name: 🚀 自动选择
     type: url-test
     url: http://www.gstatic.com/generate_204
     interval: 300
-    tolerance: 50
     proxies:
       - 🇭🇰 香港01
       - 🇭🇰 香港02
@@ -95,10 +100,11 @@ proxy-groups:
       - 🇺🇸 美国02
       - 🇺🇸 美国03
 
-  - name: 🌍 节点选择
+
+  - name: 🌐 节点选择
     type: select
     proxies:
-      - 🚀 自动测速
+      - 🚀 自动选择
       - 🇭🇰 香港01
       - 🇭🇰 香港02
       - 🇭🇰 香港03
@@ -107,8 +113,9 @@ proxy-groups:
       - 🇺🇸 美国01
       - 🇺🇸 美国02
       - 🇺🇸 美国03
+
 
 
 rules:
   - GEOIP,CN,DIRECT
-  - MATCH,🌍 节点选择
+  - MATCH,🌐 节点选择
